@@ -1,12 +1,12 @@
 import { REACT_ELEMENT_TYPE } from 'shared/ReactSymbols'
-import { hasOwnProperty } from 'shared/hasOwnProperty'
+import hasOwnProperty from 'shared/hasOwnProperty'
 
 // 保留关键字
 const RESOLVED_PROPS = {
     key: true,
     ref: true,
     __source: true,
-    __ref: true
+    __self: true
 }
 
 function ReactElement(type, key, ref, props){
@@ -28,6 +28,7 @@ function hasValidRef(config){
 }
 
 export function jsxDEV(type, config, maybekey){
+    debugger
     const props = {};
     let key = null;
     let ref = null;
@@ -40,9 +41,9 @@ export function jsxDEV(type, config, maybekey){
     if(hasValidRef(config)){
         ref = config.ref
     }
-    for (const key in config) {
-        if(hasOwnProperty.call(config, key) && !RESOLVED_PROPS.hasOwnProperty(key)){
-            props[key] = config[key]
+    for (const propName in config) {
+        if(hasOwnProperty.call(config, propName) && !RESOLVED_PROPS.hasOwnProperty(propName)){
+            props[propName] = config[propName]
         }
     }
 
