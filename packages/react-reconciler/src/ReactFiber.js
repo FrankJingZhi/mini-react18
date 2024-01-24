@@ -1,4 +1,4 @@
-import {HostRoot,IndeterminateComponent,HostComponent} from 'react-reconciler/src/ReactWorkTags'
+import {HostRoot,IndeterminateComponent,HostComponent,HostText} from 'react-reconciler/src/ReactWorkTags'
 import {NoFlags} from 'react-reconciler/src/ReactFiberFlags'
 
 export function FiberNode(tag, pendingProps, key){
@@ -7,7 +7,7 @@ export function FiberNode(tag, pendingProps, key){
     this.key = key;
     // 代表fiber节点对应虚拟dom的类型
     this.type = null;
-    // 暂时理解为真实节点（不准确，）
+    // 当前fiber节点对应的虚拟dom或函数组件
     this.stateNode = null
     // 父节点
     this.return = null
