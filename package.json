@@ -1,0 +1,25 @@
+{
+  "name": "mini-react18",
+  "version": "1.0.0",
+  "description": "手写react18源码，以此来深入学习react18",
+  "main": "index.js",
+  "scripts": {
+    "start": "vite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrankJingZhi/mini-react18.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FrankJingZhi/mini-react18/issues"
+  },
+  "homepage": "https://github.com/FrankJingZhi/mini-react18#readme",
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.12"
+  }
+}
