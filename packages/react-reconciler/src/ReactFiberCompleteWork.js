@@ -12,6 +12,7 @@ export function completeWork(current, workInProgress){
     switch(workInProgress.tag){
         case HostRoot:
             bubbleProperties(workInProgress)
+            break;
         case HostComponent:
             const {type} = workInProgress
             const instance = createInstance(type, newProps, workInProgress)
@@ -19,10 +20,12 @@ export function completeWork(current, workInProgress){
             workInProgress.stateNode = instance
             finalizeInitialChildren(instance, type, newProps) // 
             bubbleProperties(workInProgress)
+            break
         case HostText:
             const newText = newProps
             workInProgress.stateNode = createTextInstance(newText)
             bubbleProperties(workInProgress)
+            break
         default:
             return null
     }

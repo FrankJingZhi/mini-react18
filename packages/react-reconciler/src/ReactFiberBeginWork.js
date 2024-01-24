@@ -1,7 +1,8 @@
-import { HostRoot, HostComponent, HostText } from "./ReactWorkTags";
+import { HostRoot, IndeterminateComponent, HostComponent, HostText } from "./ReactWorkTags";
 import {mountChildFibers, reconcileChildFibers} from './ReactChildFiber'
 import { processUpdateQueue} from './ReactFiberClassUpdateQueue'
 import {shouldSetTextContent} from 'react-dom-bindings/src/client/ReactDOMHostConfig'
+import {renderWidthHooks} from 'react-reconciler/src/ReactFiberHooks'
 
 /**
  * ✨处理当前节点
@@ -11,6 +12,8 @@ import {shouldSetTextContent} from 'react-dom-bindings/src/client/ReactDOMHostCo
  */
 export function beginWork(current, workInProgress){
     switch(workInProgress.tag){
+        case IndeterminateComponent:
+            return mountIndeterminatecomponent(current, workInProgress, workInProgress.type )
         case HostRoot:
             return updateHostRoot(current, workInProgress)
         case HostComponent:
@@ -21,6 +24,14 @@ export function beginWork(current, workInProgress){
         default:
             return null
     }
+}
+
+function mountIndeterminatecomponent(current, workInProgress, Component){
+    const props = workInProgress.pendingProps
+    const value = renderWidthHooks(current, workInProgress, Component, props)
+    workInProgress.tag = FunctionComponent
+    reconcileChildren(current,workInProgress,value)
+    return workInProgress.child
 }
 
 /**

@@ -52,6 +52,7 @@ export function createWorkInProgress(current, pendingProps){
         workInProgress.type = current.type
         workInProgress.stateNode = current.stateNode
         workInProgress.alternate = current
+        current.alternate = workInProgress
     }else{
         // 如果构建中的RootFiber树存在，更新赋值
         workInProgress.pendingProps = current.pendingProps
@@ -60,7 +61,7 @@ export function createWorkInProgress(current, pendingProps){
         workInProgress.flags = NoFlags
         workInProgress.subtreeFlags = NoFlags
     }
-    workInProgress.chid = current.child
+    workInProgress.child = current.child
     workInProgress.memoizedProps = current.memoizedProps
     workInProgress.memoizedState = current.memoizedState
     workInProgress.updateQueue = current.updateQueue

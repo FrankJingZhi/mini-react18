@@ -3,6 +3,7 @@ import { createWorkInProgress } from './ReactFiber'
 import {beginWork} from 'react-reconciler/src/ReactFiberBeginWork'
 import {completeWork} from 'react-reconciler/src/ReactFiberCompleteWork'
 import {commitMutationEffectsOnFiber} from 'react-reconciler/src/ReactFiberCommitWork'
+import { MutationMask, NoFlags } from './ReactFiberFlags'
 
 let workInProgress = null; // 整个RootFiber树：正在构建的RootFiber树 or 构建完成的RootFiber树
 
